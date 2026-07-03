@@ -15,6 +15,8 @@ const logger = getLogger();
 
 export default async (db: any) => {
     const collection: any = await getCreatedCollection(db, 'dataset');
+    await collection.createIndex({ uri: 'hashed' });
+
     collection.insertBatch = (documents: any) => {
         return Promise.all(
             chunk(documents, 100).map((data: any) => {
