@@ -15,7 +15,11 @@ const logger = getLogger();
 
 export default async (db: any) => {
     const collection: any = await getCreatedCollection(db, 'dataset');
-    await collection.createIndex({ uri: 'hashed' });
+    try {
+        await collection.createIndex({ uri: 'hashed' });
+    } catch (err) {
+        logger.error(`Failed to creete the hashed index : `, err);
+    }
 
     collection.insertBatch = (documents: any) => {
         return Promise.all(
@@ -225,7 +229,7 @@ export default async (db: any) => {
             try {
                 await collection.createIndex({ '$**': 1 });
             } catch {
-                logger.error(`Failed to index $**`);
+                logger.error(`Failed to create index $**`);
             }
         } else {
             logger.warn(
