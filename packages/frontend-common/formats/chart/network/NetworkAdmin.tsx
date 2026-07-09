@@ -213,7 +213,7 @@ const NetworkAdmin: React.FC<NetworkAdminProps> = ({
                 />
 
                 <FormControlLabel
-                    control={<Switch defaultChecked />}
+                    control={<Switch />}
                     checked={args.equalWeights ?? false}
                     onChange={handleChangeEqualWeights}
                     label={translate('equal_weights')}

@@ -104,15 +104,15 @@ export function useFormatNetworkData({
             ({ source, target, weight }) => ({
                 source,
                 target,
-                value: displayWeighted && !equalWeights ? linkScale(weight) : 1,
-                label: equalWeights ? 1 : weight,
+                value: displayWeighted ? linkScale(weight) : 1,
+                label: displayWeighted ? weight : 1,
             }),
         );
 
         return {
             nodes: nodes.map((node) => ({
                 ...node,
-                radius: displayWeighted ? nodeScale(node.radius) : 1,
+                radius: nodeScale(node.radius),
                 color: colorOverrides(node.id) ?? undefined,
             })),
             links,
