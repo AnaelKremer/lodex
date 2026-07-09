@@ -106,7 +106,7 @@ const NetworkAdmin: React.FC<NetworkAdminProps> = ({
         [onChange, args],
     );
 
-    const handleChangeEqualWeights= useCallback(
+    const handleChangeEqualWeights = useCallback(
         (_: unknown, checked: boolean) => {
             onChange({
                 ...args,
@@ -115,8 +115,6 @@ const NetworkAdmin: React.FC<NetworkAdminProps> = ({
         },
         [onChange, args],
     );
-
-
 
     const handleChangeZoomAdjustNodeSize = useCallback(
         (_: unknown, checked: string) => {
@@ -216,7 +214,7 @@ const NetworkAdmin: React.FC<NetworkAdminProps> = ({
 
                 <FormControlLabel
                     control={<Switch defaultChecked />}
-                    checked={args.equalWeights?? false}
+                    checked={args.equalWeights ?? false}
                     onChange={handleChangeEqualWeights}
                     label={translate('equal_weights')}
                 />

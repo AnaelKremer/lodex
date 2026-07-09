@@ -14,6 +14,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: d,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );
@@ -50,6 +51,7 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: data,
                     displayWeighted: true,
+                    equalWeights: false,
                     colorOverrides: (v) => v,
                 }),
             );
@@ -76,6 +78,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );
@@ -128,6 +131,7 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: d,
                     displayWeighted: true,
+                    equalWeights: false,
                     colorOverrides: (_v) => 'overriddenColor',
                 }),
             { initialProps: { d: data1 } },
@@ -218,6 +222,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: false,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );
@@ -244,6 +249,7 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: data,
                     displayWeighted: weighted,
+                    equalWeights: false,
                     colorOverrides: (v) => v,
                 }),
             { initialProps: { weighted: false } },
@@ -286,6 +292,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v: string) => colorOverrides[v] as string,
             }),
         );
@@ -306,6 +313,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (_v) => 'overriddenColor',
             }),
         );
@@ -322,6 +330,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (_v) => 'overriddenColor',
             }),
         );
@@ -339,6 +348,7 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: data,
                     displayWeighted: true,
+                    equalWeights: false,
                     colorOverrides,
                 }),
             {
@@ -379,6 +389,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );

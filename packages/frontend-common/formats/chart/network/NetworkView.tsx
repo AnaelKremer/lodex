@@ -50,7 +50,7 @@ const Network = ({ formatData, colorSet, field }: NetworkProps) => {
                 ? field.format.args.displayWeighted
                 : true,
         equalWeights:
-                typeof field?.format?.args?.equalWeights === 'boolean'
+            typeof field?.format?.args?.equalWeights === 'boolean'
                 ? field.format.args.equalWeights
                 : false,
         minRadius,
