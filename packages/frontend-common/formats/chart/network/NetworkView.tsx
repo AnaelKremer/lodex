@@ -13,6 +13,7 @@ interface NetworkProps {
         colorScale?: ColorScaleItem[];
         captionTitle?: string;
         displayWeighted?: boolean;
+        equalWeights?: boolean;
         displayDifferentShape?: boolean;
         fieldToFilter?: string;
         secondFieldToFilter?: string;
@@ -48,6 +49,10 @@ const Network = ({ formatData, colorSet, field }: NetworkProps) => {
             typeof field?.format?.args?.displayWeighted === 'boolean'
                 ? field.format.args.displayWeighted
                 : true,
+        equalWeights:
+            typeof field?.format?.args?.equalWeights === 'boolean'
+                ? field.format.args.equalWeights
+                : false,
         minRadius,
         maxRadius,
         colorOverrides,

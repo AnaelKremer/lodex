@@ -48,6 +48,7 @@ const Network3D = ({ formatData, colorSet, field }: NetworkProps) => {
             typeof field?.format?.args?.displayWeighted === 'boolean'
                 ? field.format.args.displayWeighted
                 : true,
+        equalWeights: false,
         minRadius,
         maxRadius,
         colorOverrides,

@@ -32,6 +32,7 @@ export type NetworkData = {
 export type UseFormatNetworkDataParams = {
     formatData?: NetworkData[];
     displayWeighted: boolean;
+    equalWeights: boolean;
     minRadius?: number;
     maxRadius?: number;
     colorOverrides: (content: string) => string;
@@ -40,6 +41,7 @@ export type UseFormatNetworkDataParams = {
 export function useFormatNetworkData({
     formatData,
     displayWeighted = true,
+    equalWeights = false,
     minRadius = 1,
     maxRadius = 20,
     colorOverrides,
@@ -63,13 +65,17 @@ export function useFormatNetworkData({
                 [source]: {
                     id: source,
                     label: source_title ?? source,
-                    radius: get(acc, [source, 'radius'], 0) + weight,
+                    radius:
+                        get(acc, [source, 'radius'], 0) +
+                        (equalWeights ? 1 : weight),
                     isLeaf: false,
                 },
                 [target]: {
                     id: target,
                     label: target_title ?? target,
-                    radius: get(acc, [target, 'radius'], 0) + weight,
+                    radius:
+                        get(acc, [target, 'radius'], 0) +
+                        (equalWeights ? 1 : weight),
                     isLeaf: acc['source'] ? false : true,
                 },
             }),
@@ -99,14 +105,14 @@ export function useFormatNetworkData({
                 source,
                 target,
                 value: displayWeighted ? linkScale(weight) : 1,
-                label: weight,
+                label: displayWeighted ? weight : 1,
             }),
         );
 
         return {
             nodes: nodes.map((node) => ({
                 ...node,
-                radius: displayWeighted ? nodeScale(node.radius) : 1,
+                radius: nodeScale(node.radius),
                 color: colorOverrides(node.id) ?? undefined,
             })),
             links,

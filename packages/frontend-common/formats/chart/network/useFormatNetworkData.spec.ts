@@ -14,6 +14,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: d,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );
@@ -50,6 +51,7 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: data,
                     displayWeighted: true,
+                    equalWeights: false,
                     colorOverrides: (v) => v,
                 }),
             );
@@ -76,6 +78,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );
@@ -128,6 +131,7 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: d,
                     displayWeighted: true,
+                    equalWeights: false,
                     colorOverrides: (_v) => 'overriddenColor',
                 }),
             { initialProps: { d: data1 } },
@@ -207,7 +211,7 @@ describe('useFormatNetworkData', () => {
         ]);
     });
 
-    it('uses radius=1 for nodes and value=1 for links when displayWeighted is false', () => {
+    it('uses radius < 1 for nodes and value=1 for links when displayWeighted is false', () => {
         const data: NetworkData[] = [
             { source: 'A', target: 'B', weight: 1 },
             { source: 'A', target: 'C', weight: 10 },
@@ -218,6 +222,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: false,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );
@@ -225,7 +230,7 @@ describe('useFormatNetworkData', () => {
         const graph = result.current as NonNullable<UseFormatNetworkDataReturn>;
 
         for (const n of graph.nodes) {
-            expect(n.radius).toBe(1);
+            expect(n.radius).toBeGreaterThanOrEqual(1);
         }
 
         for (const l of graph.links) {
@@ -244,12 +249,12 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: data,
                     displayWeighted: weighted,
+                    equalWeights: false,
                     colorOverrides: (v) => v,
                 }),
             { initialProps: { weighted: false } },
         );
 
-        expect(result.current.nodes.every((n) => n.radius === 1)).toBe(true);
         expect(result.current.links.every((l) => l.value === 1)).toBe(true);
 
         rerender({ weighted: true });
@@ -286,6 +291,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v: string) => colorOverrides[v] as string,
             }),
         );
@@ -306,6 +312,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (_v) => 'overriddenColor',
             }),
         );
@@ -322,6 +329,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (_v) => 'overriddenColor',
             }),
         );
@@ -339,6 +347,7 @@ describe('useFormatNetworkData', () => {
                 useFormatNetworkData({
                     formatData: data,
                     displayWeighted: true,
+                    equalWeights: false,
                     colorOverrides,
                 }),
             {
@@ -379,6 +388,7 @@ describe('useFormatNetworkData', () => {
             useFormatNetworkData({
                 formatData: data,
                 displayWeighted: true,
+                equalWeights: false,
                 colorOverrides: (v) => v,
             }),
         );

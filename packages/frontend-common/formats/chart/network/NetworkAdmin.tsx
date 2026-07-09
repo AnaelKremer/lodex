@@ -33,6 +33,7 @@ type NetworkArgs = {
         uri?: string;
     };
     displayWeighted?: boolean;
+    equalWeights?: boolean;
     displayDifferentShape?: boolean;
     zoomAdjustNodeSize?: boolean;
     minRadius?: number;
@@ -54,6 +55,7 @@ export const defaultArgs: NetworkArgs = {
         uri: undefined,
     },
     displayWeighted: true,
+    equalWeights: false,
     displayDifferentShape: false,
     zoomAdjustNodeSize: false,
     minRadius: 1,
@@ -99,6 +101,16 @@ const NetworkAdmin: React.FC<NetworkAdminProps> = ({
             onChange({
                 ...args,
                 displayWeighted: checked,
+            });
+        },
+        [onChange, args],
+    );
+
+    const handleChangeEqualWeights = useCallback(
+        (_: unknown, checked: boolean) => {
+            onChange({
+                ...args,
+                equalWeights: checked,
             });
         },
         [onChange, args],
@@ -198,6 +210,13 @@ const NetworkAdmin: React.FC<NetworkAdminProps> = ({
                     checked={args.displayWeighted ?? true}
                     onChange={handleChangeDisplayWeighted}
                     label={translate('display_weighted')}
+                />
+
+                <FormControlLabel
+                    control={<Switch />}
+                    checked={args.equalWeights ?? false}
+                    onChange={handleChangeEqualWeights}
+                    label={translate('equal_weights')}
                 />
 
                 {format === 'network' && (
