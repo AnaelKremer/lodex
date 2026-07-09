@@ -375,6 +375,7 @@
 "colors_set"	"Color set"	"Jeu de couleurs"
 "colors_string"	"Hexadecimal color"	"Couleur hexadecimal"
 "display_weighted"	"Display nodes and edges according to their weight"	"Afficher les nœuds et les relations selon leur poids"
+"equal_weights"	"Display nodes based on the number of edges"	"Afficher les nœuds selon le nombre de relations"
 "zoom_adjust_node_size"	"When zoomed in, the size of the nodes"	"Au zoom, la taille des nœuds"
 "zoom_adapt_radius"	"adapts"	"s'adapte"
 "zoom_fixed_radius"	"remains the same"	"reste identique"
