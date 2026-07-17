@@ -49,13 +49,13 @@ const styles = {
     })),
 
     leafLabel: memoize(
-    ({
-        r,
-        lineClamp,
-    }: {
-        r: number;
-        lineClamp: number;
-    }): CSSProperties => ({
+        ({
+            r,
+            lineClamp,
+        }: {
+            r: number;
+            lineClamp: number;
+        }): CSSProperties => ({
             width: '88%',
             maxWidth: '88%',
             maxHeight: '78%',
@@ -110,14 +110,7 @@ const Bubble = ({
 }: BubbleProps) => {
     const showLabel = r >= 14;
 
-    const lineClamp =
-        r < 22
-            ? 2
-            : r < 38
-              ? 3
-              : r < 65
-                ? 4
-                : 5;
+    const lineClamp = r < 22 ? 2 : r < 38 ? 3 : r < 65 ? 4 : 5;
 
     return (
         <Box
